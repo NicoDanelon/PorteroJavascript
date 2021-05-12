@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Portero</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        
+    </head>
+    <body>
+
+        <script>
+            function escribir(n){
+                console.log(n);
+                p= document.getElementById("piso").value;
+                d= document.getElementById("depto").value;
+                lp= p.length;
+                ld= d.length;
+                lt= lp+ld;
+
+                switch(lt){
+
+                    case 0:
+                        document.getElementById("piso").value = n;
+                        break
+
+                    case 1:
+                        document.getElementById("piso").value = document.getElementById("piso").value + n;
+                        break
+
+                    case 2:
+                        document.getElementById("depto").value = document.getElementById("depto").value + n;
+                        break
+
+                }
+
+                
+            }
+            function llamar(){
+               p= document.getElementById("piso").value;
+               d= document.getElementById("depto").value;
+               var mensaje="",error="";
+
+               if(p>=0 && p<=42){
+                    mensaje+= "Llamando a " + p;
+               }else{
+                    error+=" Piso Incorrecto";
+               }
+               if(d==0){
+                 mensaje= "Ingrese un piso y un departamento";
+               }else{
+
+                  if(d>0 && d<=8){
+                    mensaje+= " Dpto " + d;
+                  }else{
+                    error+=" Depto Incorrecto";
+                  }
+               }
+               if(error==""){
+                    document.getElementById("Llamada").value= mensaje;
+               }else{
+                    document.getElementById("Llamada").value= error;
+               }
+
+            }
+        </script>
+
+        <div class="container">
+          
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="string" class="form-control" id="piso" value="" required maxlength="2">
+                </div>
+                <div class="col">
+                    <input type="string" class="form-control" id="depto" value="" required>
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+              <div class="col">
+                <input type="button" class="btn btn-primary" value="1" onclick="escribir(1)">
+              </div>
+              <div class="col">
+                <input type="button" class="btn btn-primary" value="2" onclick="escribir(2)">
+              </div>
+              <div class="col">
+                <input type="button" class="btn btn-primary" value="3" onclick="escribir(3)">
+              </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="4" onclick="escribir(4)"> 
+                </div>
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="5" onclick="escribir(5)">
+                </div>
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="6" onclick="escribir(6)">
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="7" onclick="escribir(7)">
+                </div>
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="8" onclick="escribir(8)">
+                </div>
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="9" onclick="escribir(9)">
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <div class="col">
+                  <input type="button" class="btn btn-primary" value="0" onclick="escribir(0)">
+                </div>
+                <div class="col">
+                  <input type="button" class="btn btn-success" value="Llamar" onclick="llamar()">
+                </div>
+                <div class="col">
+                  <input type="reset" class="btn btn-danger" value="Borrar">
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <div class="col">
+                    <input type="string" class="form-control" id="Llamada">
+                </div>
+            </div>
+        </div>
+        </form>
+    </body>
+</html>
